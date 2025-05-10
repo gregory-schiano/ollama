@@ -1,0 +1,61 @@
+name: ollama
+summary: Get up and running with large language models.
+description: |
+  Ollama is a lightweight, extensible framework for building and running language models on the local machine.
+  It provides a simple API for creating, running, and managing models, as well as a library of pre-built models that can be easily used in a variety of applications.
+
+type: charm
+base: ubuntu@24.04
+
+platforms:
+  amd64:
+  # arm64:
+  # ppc64el:
+  # s390x:
+
+extensions:
+  - go-framework
+
+config:
+  options:
+    ollama-context-length:
+      type: int
+      description: Sets the default context length
+      default: 4096
+    ollama-debug:
+      type: boolean
+      description: Enables ollama debug mode
+      default: false
+    ollama-flash-attention:
+      description: Enables the experimental flash attention feature.
+      type: boolean
+      default: false
+    ollama-keep-alive:
+      description: Returns the duration that models stay loaded in memory.
+      type: string
+      default: "5m"
+    ollama-load-timeout:
+      description: Returns the duration for stall detection during model loads.
+      type: string
+      default: "5m"
+    ollama-nohistory:
+      description: Disables readline history.
+      type: boolean
+      default: false
+    ollama-no-prune:
+      description: Disables pruning of model blobs on startup.
+      type: boolean
+      default: false
+    ollama-sched-spread:
+      description: Allows scheduling models across all GPUs.
+      type: boolean
+      default: false
+    ollama-intel-gpu:
+      description: Enables experimental Intel GPU detection.
+      type: boolean
+      default: false
+    ollama-new-engine:
+      description: Enable the new Ollama engine
+      type: boolean
+      default: false
+
